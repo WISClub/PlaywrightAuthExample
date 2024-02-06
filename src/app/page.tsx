@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getSession } from "@auth0/nextjs-auth0";
 
 export default async function Home() {
