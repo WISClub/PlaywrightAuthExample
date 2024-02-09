@@ -4,7 +4,7 @@
 
 This project will demonstrate how to test Auth0 authentication with Playwright.  
 **Note, Auth0 will need to have github setup as a connection.**  
-
+This is a basic nextjs App router site with Auth0 authentication.
 
 ### Pre-Setup
 - [ ] Made an Auth0 account
