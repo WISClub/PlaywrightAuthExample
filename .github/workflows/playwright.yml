@@ -1,3 +1,4 @@
+#.github\workflows\playwright.yml - Playwright workflow file for GitHub Actions, main change is the use of secrets for the environment variables 
 name: Playwright Tests
 env:
   AUTH0_BASE_URL: ${{ secrets.AUTH0_BASE_URL }}
@@ -6,6 +7,8 @@ env:
   AUTH0_ISSUER_URL: ${{ secrets.AUTH0_ISSUER_URL }}
   AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
   AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
+  GH_UNAME: ${{ secrets.GH_UNAME }}
+  GH_PWD: ${{ secrets.GH_PWD }}
 on:
   push:
     branches: [ main, master ]
