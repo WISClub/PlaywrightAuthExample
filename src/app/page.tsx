@@ -7,7 +7,7 @@ export default async function Home() {
     <main>
       <h1>You are logged {loggedIn ? "In" : "Out"}</h1>
       {
-        loggedIn ? <a href="/api/auth/logout"><h1>LOGOUT</h1></a>:<a href="/api/auth/login"><h1>LOGIN</h1></a>
+        loggedIn ? <a className="logout" href="/api/auth/logout"><h1>LOGOUT</h1></a>:<a className="login" href="/api/auth/login"><h1>LOGIN</h1></a>
       }
 
     </main>
