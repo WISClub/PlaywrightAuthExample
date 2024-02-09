@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
+    "dotenv": "^16.4.1",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"

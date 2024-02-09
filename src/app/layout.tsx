@@ -1,3 +1,6 @@
+//src\app\layout.tsx - The template for the pages in the site
+//The use provider is the most important thing for the Auth, without it, the Auth will not work on the client side
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
@@ -16,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-      <body className={inter.className}>{children}</body>
+        <body className={inter.className}>{children}</body>
       </UserProvider>
     </html>
   );
