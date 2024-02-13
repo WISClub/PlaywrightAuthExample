@@ -1,5 +1,5 @@
 // playwright.config.ts  - this is the configuration file for the playwright tests
-
+import "dotenv/config";
 import { defineConfig, devices } from '@playwright/test';
 
 
@@ -22,7 +22,6 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://127.0.0.1:3000', // I would not set this to the hosted url (like *.vercel.app) because it will be different from the code running locally
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -34,7 +33,8 @@ export default defineConfig({
       name: 'chromium',
       dependencies: ['setup'],
       testMatch: /.*\.spec\.ts/,
-      use: {...devices['Desktop Chrome'],storageState: 'playwright/.auth/user.json' },
+      use: {storageState: 'playwright/.auth/user.json',...devices['Desktop Chrome']
+       },
     },
     //uncomment the following to run tests on firefox and safari
     /*
@@ -80,5 +80,13 @@ export default defineConfig({
     command: 'npm run dev',//the command to start the server, running npm run build && npm run start will start the server as well and may check for errors in building but it will take a lot
     url: 'http://127.0.0.1:3000',//the url that playwright will use to access the server
     reuseExistingServer: !process.env.CI,
+    env: {
+      AUTH0_SECRET: process.env.AUTH0_SECRET_TEST??'',
+      AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID_TEST??'',
+      AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET_TEST??'',
+      TEST_UNAME: process.env.TEST_UNAME??'',
+      TEST_PWD: process.env.TEST_PWD??'',
+    },
   },
+
 });
