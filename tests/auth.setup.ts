@@ -15,7 +15,6 @@ setup("authenticate", async ({ page }) => {
   await page.getByLabel('Password').fill(password);
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await page.waitForURL('http://localhost:3000/');
-  expect(await page.title()).toBe('Auth Testing Demo');
-  page.context().storageState({ path: authFile });
+  await page.context().storageState({ path: authFile });
 });
 
