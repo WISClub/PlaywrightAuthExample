@@ -26,6 +26,7 @@ test("get status", async ({ page }) => {
  * This test will check if the user is logged in
  * It needs to be authenticated to pass
  */
+test.use({ storageState: authFile }); //use the authentication state saved in the file
 test("login works", async ({ page  }) => {
   await page.goto("/");
   let a = await page.$("a");
