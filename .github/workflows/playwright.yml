@@ -9,6 +9,8 @@ env:
   AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
   GH_UNAME: ${{ secrets.GH_UNAME }}
   GH_PWD: ${{ secrets.GH_PWD }}
+  # Storage State is defined to ensure that the worker creates a file containing the auth state in a temporary directory
+  STORAGE_STATE_PATH: '/home/runner/work/PlaywrightAuthExample/PlaywrightAuthExample/user.json'
 on:
   push:
     branches: [ main, master ]
@@ -29,6 +31,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    - name: Delete Secrets
+      run: rm -rf /home/runner/work/PlaywrightAuthExample/PlaywrightAuthExample/user.json
     - uses: actions/upload-artifact@v3
       if: always()
       with:

@@ -7,7 +7,7 @@ import "dotenv/config";
 let username: string = process.env.GH_UNAME ?? ""; //if the GH_UNAME environment variable is not set, then use an empty string
 let password: string = atob(process.env.GH_PWD ?? "") || ""; //same as above, but also decode the base64 string
 
-const authFile = "playwright/.auth/user.json"; //where to save the authentication state
+const authFile = process.env.STORAGE_STATE_PATH; //where to save the authentication state
 
 setup("authenticate", async ({ page }) => {
   // Perform authentication steps.

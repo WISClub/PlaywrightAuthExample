@@ -22,7 +22,10 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://127.0.0.1:3000', // I would not set this to the hosted url (like *.vercel.app) because it will be different from the code running locally
-
+    
+    /*The storage state is the auth information that the runners use for testing.  This line checks if the tests are run locally or not.*/
+    storageState: process.env.STORAGE_STATE_PATH,
+    
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
