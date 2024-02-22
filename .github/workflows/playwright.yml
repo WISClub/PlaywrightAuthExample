@@ -7,7 +7,7 @@ env:
   AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
   AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
   # Storage State is defined to ensure that the worker creates a file containing the auth state in a temporary directory
-  STORAGE_STATE_PATH: '/home/runner/work/PlaywrightAuthExample/PlaywrightAuthExample/user.json'
+  STORAGE_STATE_PATH: ${{ secrets.STORAGE_STATE_PATH }}
   TEST_UNAME: ${{ secrets.TEST_UNAME }}
   TEST_PWD: ${{ secrets.TEST_PWD }}
   AUTH0_SECRET_TEST: ${{ secrets.AUTH0_SECRET_TEST }}

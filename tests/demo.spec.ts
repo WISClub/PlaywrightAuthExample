@@ -5,7 +5,7 @@ import "dotenv/config";
 
 
 
-const authFile = "playwright/.auth/user.json"; //where to save the authentication state
+const authFile = process.env.STORAGE_STATE_PATH //where to save the authentication state
 test.use({ storageState: authFile }); //save the authentication state to the file
 
 
