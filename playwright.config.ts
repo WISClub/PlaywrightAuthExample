@@ -21,7 +21,9 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
+    
     baseURL: 'http://localhost:3000', // I would not set this to the hosted url (like *.vercel.app) because it will be different from the code running locally
+    
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -34,7 +36,8 @@ export default defineConfig({
       dependencies: ['setup'],
       testMatch: /.*\.spec\.ts/,
       use: {...devices['Desktop Chrome'],
-      storageState: 'playwright/.auth/user.json', //this is set in the setup test
+    /*The storage state is the auth information that the runners use for testing.  This line checks if the tests are run locally or not.*/
+    storageState: process.env.STORAGE_STATE_PATH,
       },
     },
     //uncomment the following to run tests on firefox and safari
