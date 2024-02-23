@@ -9,12 +9,11 @@ let password: string = atob(process.env.TEST_PWD ?? "") || ""; //same as above, 
 const authFile = process.env.STORAGE_STATE_PATH; //where to save the authentication state
 
 setup("authenticate", async ({ page }) => {
-  await page.goto('http://localhost:3000/api/auth/login');
-  await page.waitForURL('https://is373-dev.us.auth0.com/**');
-  await page.getByLabel('Email address').fill(username);
-  await page.getByLabel('Password').fill(password);
-  await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await page.waitForURL('http://localhost:3000/');
+  await page.goto(`${process.env.AUTH0_BASE_URL}/api/auth/login`);
+  await page.waitForURL(`${process.env.AUTH0_ISSUER_BASE_URL}/**`);
+  await page.getByLabel("Email address").fill(username);
+  await page.getByLabel("Password").fill(password);
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.waitForURL(process.env.AUTH0_BASE_URL + ""); // the +"" is to make typescript shut up 💀
   await page.context().storageState({ path: authFile });
 });
-

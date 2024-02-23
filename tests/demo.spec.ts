@@ -3,11 +3,8 @@
 import { test, expect } from "@playwright/test";
 import "dotenv/config";
 
-
-
-const authFile = process.env.STORAGE_STATE_PATH //where to save the authentication state
+const authFile = process.env.STORAGE_STATE_PATH; //where to save the authentication state
 test.use({ storageState: authFile }); //save the authentication state to the file
-
 
 /**
  * This test will get the status code of the page
@@ -27,7 +24,7 @@ test("get status", async ({ page }) => {
  * It needs to be authenticated to pass
  */
 test.use({ storageState: authFile }); //use the authentication state saved in the file
-test("login works", async ({ page  }) => {
+test("login works", async ({ page }) => {
   await page.goto("/");
   let a = await page.$("a");
   expect(a).toBeTruthy();
